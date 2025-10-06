@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kritik dan Saran</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #555;
+      padding: 20px;
+    }
+    form {
+      background: rgb(146, 145, 145);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #000000;
+    }
+    button {
+      background: #495ba5;
+      color: rgb(0, 0, 0);
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Form Kritik dan Saran</h1>
+
+  <form id="kritikForm">
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" name="nama" required>
+
+    <label for="email">Email (opsional):</label>
+    <input type="email" id="email" name="email">
+
+    <label for="pesan">Kritik / Saran:</label>
+    <textarea id="pesan" name="pesan" rows="4" required></textarea>
+
+    <button type="submit">Kirim</button>
+  </form>
+
+  <p id="hasil"></p>
+
+  <script>
+    const form = document.getElementById("kritikForm");
+    const hasil = document.getElementById("hasil");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); <--  Mencegah reload halaman -->
+      const nama = form.nama.value;
+      const pesan = form.pesan.value;
+
+      hasil.textContent = `Terima kasih, ${nama}! Kritik/saran kamu: "${pesan}" telah diterima.`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>
